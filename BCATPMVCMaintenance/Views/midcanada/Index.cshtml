@@ -1,0 +1,119 @@
+﻿@model IEnumerable<BCATPMVCMaintenance.Models.midcanada>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Main menu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<h2>Mid Canada</h2>
+
+<p style="font-weight:bold">
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+@*<html>*@
+<head>
+    <style type="text/css">
+        table {
+            width: 90%;
+            table-layout: fixed;
+            /*border-collapse: collapse;*/
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        .scrollingTable {
+            width: 1150px;
+            overflow-y: auto;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function makeTableScroll() {
+            // Constant retrieved from server-side via JSP
+            var maxRows = 4;
+
+            var table = document.getElementById('myTable');
+            var wrapper = table.parentNode;
+            var rowsInTable = table.rows.length;
+            var height = 0;
+            if (rowsInTable > maxRows) {
+                for (var i = 0; i < maxRows; i++) {
+                    height += table.rows[i].clientHeight;
+                }
+                wrapper.style.height = height + "px";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <table id="myTable2" class="table">
+
+        @*<thead>*@
+        <tr class="col-md-12 text-center">
+            <th col-sm-2>Name</th>
+            <th col-sm-2>Longitude</th>
+            <th col-sm-2>Latitude</th>
+            <th col-sm-2>Comment</th>
+            @*<th col-sm-2>Wiki</th>*@
+            <th col-sm-2>Manage</th>
+        </tr>
+        @*</thead>*@
+
+    </table>
+</body>
+<body onload="makeTableScroll();">
+
+    <div class="scrollingTable">
+        <table id="myTable" class="table">
+
+            @foreach (var item in Model)
+            {
+                <tr class="col-md-12">
+
+                    @if (item.wiki != "")
+                    {
+                        <td style="width: 27%;">
+                            <a href='@Html.DisplayFor(modelItem => item.wiki)' target="_blank" style="color: blue; text-decoration: underline; padding-left: 20px;  word-wrap: break-word">
+                                @Html.DisplayFor(modelItem => item.name)
+                            </a>
+                        </td>
+
+                    }
+
+                    @if (item.wiki == "")
+                    {
+                        <td style="width: 27%; padding-left: 30px;  word-wrap: break-word ">
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+
+                    }
+                    <td col-sm-2>
+                        @Html.DisplayFor(modelItem => item.latitude)
+                    </td>
+                    <td col-sm-2>
+                        @Html.DisplayFor(modelItem => item.longitude)
+                    </td>
+                    <td col-sm-2>
+                        @Html.DisplayFor(modelItem => item.comment)
+                    </td>
+                    <td col-sm-2 style="font-weight:bold;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) -
+                        @Html.ActionLink("Map", "Details", new { id = item.Id }) -
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @*//@Html.ActionLink("View", "View", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>

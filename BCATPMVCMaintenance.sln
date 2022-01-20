@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCATPMVCMaintenance", "BCATPMVCMaintenance\BCATPMVCMaintenance.csproj", "{95673AAF-8F18-47CB-827D-2275B5C5FA9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95673AAF-8F18-47CB-827D-2275B5C5FA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95673AAF-8F18-47CB-827D-2275B5C5FA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95673AAF-8F18-47CB-827D-2275B5C5FA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95673AAF-8F18-47CB-827D-2275B5C5FA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D45C2F8-BDA9-4A93-8677-CD594F6B004D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/rogerprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BCATPMVCMaintenance\\BCATPMVCMaintenance.csproj
+		SccProjectName1 = BCATPMVCMaintenance
+		SccLocalPath1 = BCATPMVCMaintenance
+	EndGlobalSection
+EndGlobal
