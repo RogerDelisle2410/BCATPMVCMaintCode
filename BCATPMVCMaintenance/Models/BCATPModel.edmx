@@ -5,13 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BCATPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'bcatpdb2.dbo.airforce' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="airforce">
           <Key>
             <PropertyRef Name="Id" />
-            
-            
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -106,6 +102,7 @@ warning 6002: The table/view 'bcatpdb2.dbo.airforce' does not have a primary key
           <Property Name="type" Type="int" />
         </EntityType>
         <EntityContainer Name="BCATPModelStoreContainer">
+          <EntitySet Name="airforce" EntityType="Self.airforce" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="army" EntityType="Self.army" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bcatp" EntityType="Self.bcatp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="defunct" EntityType="Self.defunct" Schema="dbo" store:Type="Tables" />
@@ -113,17 +110,6 @@ warning 6002: The table/view 'bcatpdb2.dbo.airforce' does not have a primary key
           <EntitySet Name="midcanada" EntityType="Self.midcanada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="navy" EntityType="Self.navy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pinetree" EntityType="Self.pinetree" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="airforce" EntityType="Self.airforce" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [airforce].[Id] AS [Id], 
-    [airforce].[name] AS [name], 
-    [airforce].[longitude] AS [longitude], 
-    [airforce].[latitude] AS [latitude], 
-    [airforce].[comment] AS [comment], 
-    [airforce].[wiki] AS [wiki], 
-    [airforce].[type] AS [type]
-    FROM [dbo].[airforce] AS [airforce]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
