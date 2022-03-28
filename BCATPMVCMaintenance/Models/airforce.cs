@@ -17,8 +17,9 @@ namespace BCATPMVCMaintenance.Models
         public int Id { get; set; }
         public string name { get; set; }
         public double longitude { get; set; }
-        public double latitude { get; set; }
+        public Nullable<double> latitude { get; set; }
         public string comment { get; set; }
         public string wiki { get; set; }
+        public Nullable<int> type { get; set; }
     }
 }

@@ -5,27 +5,33 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BCATPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bcatpdb2.dbo.airforce' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="airforce">
           <Key>
             <PropertyRef Name="Id" />
+            
+            
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
-          <Property Name="latitude" Type="float" Nullable="false" />
+          <Property Name="latitude" Type="float" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="army">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="bcatp">
           <Key>
@@ -37,39 +43,43 @@
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="defunct">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="dewline">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="midcanada">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="navy">
           <Key>
@@ -81,20 +91,21 @@
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityType Name="pinetree">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="wiki" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="int" />
         </EntityType>
         <EntityContainer Name="BCATPModelStoreContainer">
-          <EntitySet Name="airforce" EntityType="Self.airforce" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="army" EntityType="Self.army" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bcatp" EntityType="Self.bcatp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="defunct" EntityType="Self.defunct" Schema="dbo" store:Type="Tables" />
@@ -102,6 +113,17 @@
           <EntitySet Name="midcanada" EntityType="Self.midcanada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="navy" EntityType="Self.navy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pinetree" EntityType="Self.pinetree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="airforce" EntityType="Self.airforce" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [airforce].[Id] AS [Id], 
+    [airforce].[name] AS [name], 
+    [airforce].[longitude] AS [longitude], 
+    [airforce].[latitude] AS [latitude], 
+    [airforce].[comment] AS [comment], 
+    [airforce].[wiki] AS [wiki], 
+    [airforce].[type] AS [type]
+    FROM [dbo].[airforce] AS [airforce]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -114,9 +136,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="longitude" Type="Double" Nullable="false" />
-          <Property Name="latitude" Type="Double" Nullable="false" />
+          <Property Name="latitude" Type="Double" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="midcanada">
           <Key>
@@ -128,6 +151,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="army">
           <Key>
@@ -139,6 +163,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="bcatp">
           <Key>
@@ -150,6 +175,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="defunct">
           <Key>
@@ -161,6 +187,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="dewline">
           <Key>
@@ -172,6 +199,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="navy">
           <Key>
@@ -183,6 +211,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityType Name="pinetree">
           <Key>
@@ -194,6 +223,7 @@
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="wiki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
         </EntityType>
         <EntityContainer Name="BCATPEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="airforces" EntityType="Self.airforce" />
@@ -214,6 +244,7 @@
           <EntitySetMapping Name="airforces">
             <EntityTypeMapping TypeName="BCATPModel.airforce">
               <MappingFragment StoreEntitySet="airforce">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -226,6 +257,7 @@
           <EntitySetMapping Name="midcanada">
             <EntityTypeMapping TypeName="BCATPModel.midcanada">
               <MappingFragment StoreEntitySet="midcanada">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -238,6 +270,7 @@
           <EntitySetMapping Name="armies">
             <EntityTypeMapping TypeName="BCATPModel.army">
               <MappingFragment StoreEntitySet="army">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -250,6 +283,7 @@
           <EntitySetMapping Name="bcatps">
             <EntityTypeMapping TypeName="BCATPModel.bcatp">
               <MappingFragment StoreEntitySet="bcatp">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -262,6 +296,7 @@
           <EntitySetMapping Name="defuncts">
             <EntityTypeMapping TypeName="BCATPModel.defunct">
               <MappingFragment StoreEntitySet="defunct">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -274,6 +309,7 @@
           <EntitySetMapping Name="dewlines">
             <EntityTypeMapping TypeName="BCATPModel.dewline">
               <MappingFragment StoreEntitySet="dewline">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -286,6 +322,7 @@
           <EntitySetMapping Name="navies">
             <EntityTypeMapping TypeName="BCATPModel.navy">
               <MappingFragment StoreEntitySet="navy">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
@@ -298,6 +335,7 @@
           <EntitySetMapping Name="pinetrees">
             <EntityTypeMapping TypeName="BCATPModel.pinetree">
               <MappingFragment StoreEntitySet="pinetree">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />

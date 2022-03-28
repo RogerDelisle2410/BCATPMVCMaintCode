@@ -20,5 +20,6 @@ namespace BCATPMVCMaintenance.Models
         public double latitude { get; set; }
         public string comment { get; set; }
         public string wiki { get; set; }
+        public Nullable<int> type { get; set; }
     }
 }
