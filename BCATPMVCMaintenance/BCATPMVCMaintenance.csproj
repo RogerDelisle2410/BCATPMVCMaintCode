@@ -280,8 +280,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\CanadianArmedForces.png" />
-    <Content Include="images\CanadianEmblem.png" />
-    <Content Include="images\CanadianEmblem2.ico" />
     <Content Include="Models\BCATPModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BCATPModel.edmx</DependentUpon>
